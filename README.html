@@ -1,0 +1,70 @@
+﻿<h1>Content Query Block Mini Language</h1>
+<h3>Purpose</h3>
+<p>The purpose of this document, is to describe the mini language used by content query blocks.
+It is a simple expression language, that always evaluates to a boolean value, based on a number of simple rules.</p>
+<p>Only developers should ever see this, as it is stored in the database, in a text field.</p>
+<h3>Rationale</h3>
+<p>The reason for storing the query in a simple string is to able to store it succintly in the database. A more complex data model would be cumbersome, if not impossible, to store.</p>
+<h3>Format</h3>
+<pre class="prettyprint lang-javascript"><code>&lt;field_name&gt; &lt;operator&gt; &lt;value&gt;[ &lt;boolean_operator&gt; &lt;field_name&gt; &lt;operator&gt; &lt;value&gt;]*  
+</code></pre>
+<h3>Allowed field names</h3>
+<pre class="prettyprint lang-javascript"><code>author_id    // Author id (integer)
+pub_date     // Mofibo publication date (datetime)
+title        // Title (string)
+kpi          // KPI (floating point)
+publisher_id // Publisher id (integer)
+language     // Book language (string)
+type         // Book discriminator {Ebook, AudioBook} (string)
+price        // M-price (floating point)
+series_id    // Series id (integer)
+bic_genre_id // BIC genre id (integer)
+</code></pre>
+<h3>Allowed operators</h3>
+<pre class="prettyprint lang-javascript"><code>=   // Equals
+!=  // Does not equal
+&lt;   // Lesser than
+&gt;   // Greater than  
+&lt;=  // Lesser than or equal to
+&gt;=  // Greater than or equal to  
+~=  // In (only applicable for lists)
+</code></pre>
+<h3>Allowed boolean operators</h3>
+<pre class="prettyprint lang-javascript"><code>&amp;&amp; // AND
+</code></pre>
+<h3>Allowed value types</h3>
+<p>All value types are required to be of the same type as that of the field they're compared against, with the exception of <a href="#lists">lists</a></p>
+<h5>String</h5>
+<p>Strings are delimited by &quot;. They can contain &quot; characters, if they are escaped with a backslash (\)</p>
+<pre class="prettyprint lang-javascript"><code>&quot;string value&quot;
+</code></pre>
+<h5>Date and time</h5>
+<p>Date and time are always denoted as UTC</p>
+<pre class="prettyprint lang-javascript"><code>/2015-04-09/
+/2015-04-09 14:15:00/
+</code></pre>
+<h5>Numbers</h5>
+<p>Numbers are split up into two subtypes, integers and floating point.</p>
+<h6>Integers</h6>
+<pre class="prettyprint lang-javascript"><code>1
+42
+</code></pre>
+<h6>Floating point</h6>
+<pre class="prettyprint lang-javascript"><code>2.0
+3.14159265
+2.71828
+</code></pre>
+<h5>Lists</h5>
+<p>A list of values. All values in a list are required to be of the same type as the field they're compared against, and therefore all of the same type.</p>
+<pre class="prettyprint lang-javascript"><code>(42)
+(46 34 642)
+(/2015-04-09/ /2015-04-11/)
+(&quot;Isfolket&quot; &quot;Fiddy Shades&quot;)
+</code></pre>
+<h3>Examples</h3>
+<pre class="prettyprint lang-javascript"><code>author_id = 423
+pub_date &gt;= /2015-04-09/  
+kpi &lt; 5.5
+publisher_id = 324 &amp;&amp; kpi &lt; 5.5
+language ~= (&quot;dan&quot; &quot;eng&quot;)
+</code></pre>
