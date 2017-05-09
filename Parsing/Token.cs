@@ -1,4 +1,4 @@
-﻿namespace Pippi.Qml.Parsing
+namespace Storytel.Qml.Parsing
 {
     internal class Token
     {

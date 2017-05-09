@@ -1,4 +1,4 @@
-namespace Pippi.Qml
+namespace Storytel.Qml
 {
     public interface ICompiler<in TInput, out TOutput>
     {

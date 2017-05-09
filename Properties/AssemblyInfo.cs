@@ -1,15 +1,15 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Pippi.Qml")]
+[assembly: AssemblyTitle("Storytel.Qml")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Mofibo Books ApS")]
-[assembly: AssemblyProduct("Pippi.Qml")]
+[assembly: AssemblyProduct("Storytel.Qml")]
 [assembly: AssemblyCopyright("Copyright © Mofibo Books ApS 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

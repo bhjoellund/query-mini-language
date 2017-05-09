@@ -1,4 +1,4 @@
-﻿namespace Pippi.Qml
+namespace Storytel.Qml
 {
     using System;
     using System.Globalization;

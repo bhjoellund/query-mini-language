@@ -1,4 +1,4 @@
-﻿namespace Pippi.Qml
+namespace Storytel.Qml
 {
     internal interface ICodeGenerator<in TInput, out TOutput>
     {
